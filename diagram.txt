@@ -1,0 +1,42 @@
+hel-sys-manager/
+📁 hel-sys-manager/
+├── 📄 README.md
+├── 📄 __init__.py
+├── 📄 requirements.txt
+└── 📁 src
+    ├── 📄 __init__.py
+    ├── 📁 assets
+    │   ├── 📄 __init__.py
+    │   ├── 📁 icons
+    │   │   ├── 📄 __init__.py
+    │   │   ├── 📄 app_icon.png
+    │   │   └── 📁 tab_icons
+    │   │       ├── 📄 __init__.py
+    │   │       ├── 📄 dotfiles.png
+    │   │       ├── 📄 packages.png
+    │   │       ├── 📄 services.png
+    │   │       └── 📄 system.png
+    │   ├── 📁 images
+    │   │   ├── 📄 __init__.py
+    │   │   └── 📄 logo.png
+    │   └── 📁 styles
+    │       └── 📄 __init__.py
+    ├── 📁 core
+    │   ├── 📄 __init__.py
+    │   ├── 📄 dotfiles_handler.py
+    │   ├── 📄 package_handler.py
+    │   ├── 📄 pacman_aur_manager.py
+    │   ├── 📄 services_manager.py
+    │   ├── 📄 system_utils.py
+    │   └── 📄 systemd_manager.py
+    ├── 📄 hel-sys-manager.desktop
+    ├── 📄 main.py
+    └── 📁 ui
+        ├── 📄 __init__.py
+        ├── 📄 about_dialog.py
+        ├── 📄 dotfiles_tab.py
+        ├── 📄 main_window.py
+        ├── 📄 packages_tab.py
+        ├── 📄 services_tab.py
+        ├── 📄 system_tab.py
+        └── 📄 system_update_tab.py
