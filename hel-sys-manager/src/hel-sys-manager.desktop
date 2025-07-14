@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Helwan System Manager
+Comment=Advanced system management tool for Helwan Linux
+Exec=hel-sys-manager
+Icon=hel-sys-manager
+Terminal=false
+Type=Application
+Categories=System;Settings;Utility;
+StartupNotify=true
