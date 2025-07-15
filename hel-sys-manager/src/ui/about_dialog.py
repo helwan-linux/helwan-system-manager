@@ -49,7 +49,7 @@ class AboutDialog(QDialog):
         
         # الوصف
         # Description
-        description_label = QLabel("A powerful Arch Linux system management and customization assistant.")
+        description_label = QLabel("A powerful Arch Linux system management \nand customization assistant.")
         description_label.setAlignment(Qt.AlignCenter)
         description_label.setFont(QFont("SansSerif", 10))
 
