@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QListWidget, QTextEdit, QMessageBox
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QListWidget, QTextEdit, QMessageBox, QDialog
 from PyQt5.QtCore import Qt
 import os
 from src.core.package_handler import PackageHandler
@@ -155,7 +155,7 @@ class PackagesTab(QWidget):
             QMessageBox.information(self, "Installation", "Please authorize the root privileges in the terminal/popup if prompted.")
             success, message = self.handler.install_package(package_name)
             if success:
-                QMessageBox.information(self, "Installation Complete", message)
+                self._show_scrollable_message("Installation Complete", message) # تم التعديل هنا
                 # ربما نحدث قائمة الحزم المثبتة هنا لاحقاً
             else:
                 QMessageBox.critical(self, "Installation Error", message)
@@ -175,7 +175,7 @@ class PackagesTab(QWidget):
             QMessageBox.information(self, "Removal", "Please authorize the root privileges in the terminal/popup if prompted.")
             success, message = self.handler.remove_package(package_name)
             if success:
-                QMessageBox.information(self, "Removal Complete", message)
+                self._show_scrollable_message("Removal Complete", message) # تم التعديل هنا
                 # ربما نحدث قائمة الحزم المثبتة هنا لاحقاً
             else:
                 QMessageBox.critical(self, "Removal Error", message)
@@ -189,7 +189,7 @@ class PackagesTab(QWidget):
             QMessageBox.information(self, "System Update", "Please authorize the root privileges in the terminal/popup if prompted.")
             success, message = self.handler.update_system()
             if success:
-                QMessageBox.information(self, "System Update Complete", message)
+                self._show_scrollable_message("System Update Complete", message) # تم التعديل هنا
             else:
                 QMessageBox.critical(self, "System Update Error", message)
 
@@ -208,3 +208,21 @@ class PackagesTab(QWidget):
 
     def _manage_repositories(self):
         QMessageBox.information(self, "Manage Repositories", "This feature will allow adding/removing/editing package repositories. (Advanced - To be implemented)")
+
+    def _show_scrollable_message(self, title, message):
+        dialog = QDialog(self)
+        dialog.setWindowTitle(title)
+        dialog.setMinimumSize(400, 300) # تحديد حجم افتراضي للنافذة
+        
+        layout = QVBoxLayout(dialog)
+        
+        text_edit = QTextEdit(dialog)
+        text_edit.setReadOnly(True)
+        text_edit.setText(message)
+        layout.addWidget(text_edit)
+        
+        ok_button = QPushButton("OK", dialog)
+        ok_button.clicked.connect(dialog.accept)
+        layout.addWidget(ok_button)
+        
+        dialog.exec_()
